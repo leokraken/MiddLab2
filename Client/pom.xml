@@ -14,6 +14,21 @@
       </resource>
     </resources>
     <plugins>
+	<plugin>
+      <artifactId>maven-assembly-plugin</artifactId>
+      <configuration>
+ 	<finalName>Cliente</finalName>
+	 <appendAssemblyId>false</appendAssemblyId>
+        <descriptorRefs>
+          <descriptorRef>jar-with-dependencies</descriptorRef>
+        </descriptorRefs>
+        <archive>
+          <manifest>
+            <mainClass>midd.ws.client.Client</mainClass>
+          </manifest>
+        </archive>
+      </configuration>
+    </plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.1</version>
