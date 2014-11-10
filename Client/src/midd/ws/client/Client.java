@@ -8,13 +8,14 @@ import java.io.IOException;
 import midd.datatypes.DataParse;
 import midd.logic.FileWSService;
 import midd.logic.Utils;
+import javax.xml.ws.soap.MTOMFeature;
 
 public class Client {
 
 	public static void downloadFile(String name, String rename) throws IOException{
 
 		FileWSService ws = new FileWSService();
-		midd.logic.IFileWS port = ws.getFileWSPort();
+		midd.logic.IFileWS port = ws.getFileWSPort(new MTOMFeature());
 		byte[] data = port.downloadFile(name);
 		
 		if(data != null){
@@ -32,7 +33,7 @@ public class Client {
 	public static void uploadFile(String name, String rename) throws IOException{
 		
 		FileWSService ws = new FileWSService();
-		midd.logic.IFileWS port = ws.getFileWSPort();
+		midd.logic.IFileWS port = ws.getFileWSPort(new MTOMFeature());
 		File file = new File(name);
 		byte [] base64 = new byte[(int)file.length()];
 		FileInputStream rip =  new FileInputStream(file);
